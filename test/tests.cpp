@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <thread>
 #include <chrono>
+#include <string>
 #include "TimedDoor.h"
 
 // Mock for TimerClient
