@@ -86,8 +86,8 @@ TEST_F(TimedDoorTest, TimeoutExceptionWhenDoorRemainsOpen) {
     FAIL() << "unlock() should have triggered timeout exception";
   } catch (const std::exception& e) {
     std::string msg(e.what());
-    EXPECT_TRUE(msg.find("timeout") != std::string::npos || 
-                msg.find("Timeout") != std::string::npos || 
+    EXPECT_TRUE(msg.find("timeout") != std::string::npos ||
+                msg.find("Timeout") != std::string::npos ||
                 msg.find("alarm") != std::string::npos);
   }
 }
@@ -119,7 +119,7 @@ TEST_F(TimedDoorTest, DoorReopenAfterClose) {
   // First close
   door->lock();
   EXPECT_FALSE(door->isDoorOpened());
-  
+
   // Can attempt to open again
   try {
     door->unlock();
@@ -132,10 +132,10 @@ TEST_F(TimedDoorTest, DoorReopenAfterClose) {
 TEST_F(TimedDoorTest, TimerRegistersClient) {
   MockTimerClient* mockClient = new MockTimerClient();
   EXPECT_CALL(*mockClient, Timeout()).Times(1);
-  
+
   Timer timer;
   timer.tregister(10, mockClient);
-  
+
   delete mockClient;
 }
 

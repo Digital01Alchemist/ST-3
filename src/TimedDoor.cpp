@@ -13,7 +13,7 @@ class DoorTimeoutException : public std::exception {
 };
 
 // TimedDoor implementation
-TimedDoor::TimedDoor(int timeout) 
+TimedDoor::TimedDoor(int timeout)
     : adapter(nullptr), iTimeout(timeout), isOpened(false) {
   adapter = new DoorTimerAdapter(*this);
 }
